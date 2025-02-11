@@ -1,4 +1,16 @@
 const myLibrary = [];
+const showBtn = document.querySelector('#header > button')
+const dialog = document.querySelector('dialog')
+const closebtn = document.querySelector('form button')
+
+showBtn.addEventListener('click', () => {
+    dialog.showModal()
+})
+
+closebtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  dialog.close()
+})
 
 function book(tittle, author, pages,seen) {
   // the constructor...

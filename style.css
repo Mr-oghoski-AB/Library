@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 8fr;
+    height: 100vh;
+}
+
+#header {
+    background-color: #E5989B;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.bod{
+    background-color: #FFCDB2;
+    position: relative;
+}
+
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+}
