@@ -12,25 +12,26 @@
         <h1>PROJECT LIBRARY</h1>
         <button >Add Book</button>
     </div>
-    <div class="bod">
+    <div class="bod" id="bod">
+        <div id="card-container"></div>
         <dialog>
             <form action="dialog">
                 <div>
                     <label for="Author">Author</label>
-                    <input id="Author" type="text">
+                    <input id="Author" type="text" name="Author" autofocus >
                 </div>
                 <div>
                     <label for="Tittle">Tittle</label>
-                    <input id="Tittle" type="text">
+                    <input id="Tittle" name="Tittle" type="text">
                 </div>
                 <div>
                     <label for="pages">pages</label>
-                    <input id="pages" type="text">
+                    <input id="pages" name="pages" type="number">
                 </div>
                 <div>
-                    <label for="seen">seen</label>
-                    <input type="radio">
-                    <input type="radio">
+                    <label for="read">Read</label>
+                    <input name="read" type="radio" value="Read"> yes
+                    <input name="read" type="radio" value="Not-Read"> no 
                 </div>
                 <button type="submit"> ADD</button>
             </form>    

@@ -12,6 +12,17 @@ function book(tittle, author, pages,seen) {
   this.seen = seen;
 }
 
+book.prototype.toggle = function(){
+  if (this.seen =='Read'){
+    this.seen = 'Not-Read'
+  }
+  else {
+    this.seen = 'Read'
+  }
+  console.log(this.seen);
+  
+}
+
 
 function addBookToLibrary(tittle, author, pages,seen) {
   // take params, create a book then store it in the array
@@ -34,7 +45,7 @@ e.preventDefault()
 const author = document.querySelector('#Author').value;
 const tittle = document.querySelector('#Tittle').value;
 const pages = document.querySelector('#pages').value;
-const seen =  document.querySelector('#seen').value;
+const seen =  document.querySelector('input[name="read"]:checked').value;
 
 
 //removes children first
@@ -50,6 +61,7 @@ loopArray();
 // console.table(myLibrary)
 const container = document.getElementById('card-container');
 
+
 const loopArray = () => {
     myLibrary.forEach((item,index) => {
 
@@ -58,15 +70,40 @@ const loopArray = () => {
       container.appendChild(card);
       card.dataset.id = index;
 
-      for (const key in item) {
-        let text = document.createElement('p');
+      //creates the text element and appends
+      for (let key in item) {
+        if (item.hasOwnProperty(key)){
+          //
+          if (key.toString() === "seen"){
+            let toggleContainer = document.createElement('div');
+            let text = document.createElement('span');
+            let button = document.createElement('button');
 
-        text.textContent = item[key]
-        card.appendChild(text)
+            button.textContent = 'Toggle'
+            toggleContainer.appendChild(text);
+            toggleContainer.appendChild(button);
+            text.textContent = item[key]
+            card.appendChild(toggleContainer);
+            
+            //toggle read
+            button.addEventListener('click', () => {
+              item.toggle();
+              container.replaceChildren();
+              loopArray();
+              
+            })
+          }
+          else{
+            let text = document.createElement('p');
+            text.textContent = item[key]
+            card.appendChild(text);
+          }
+          
+          
+        }
       }
-        // console.table(item)
 
-        //
+        //delete card 
         let remove = document.createElement('button');
         remove.setAttribute('class', 'delete');
         remove.textContent = 'Delete';
@@ -80,7 +117,7 @@ const loopArray = () => {
           
         })
 
-        // return card, remove
+
     })
 }
 
@@ -92,4 +129,6 @@ function deleteCard (id){
       myLibrary.splice(id,1);
 }
 }
+
+
 
