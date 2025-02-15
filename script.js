@@ -94,6 +94,8 @@ const loopArray = () => {
             toggleContainer.appendChild(button);
             text.textContent = item[key]
             card.appendChild(toggleContainer);
+            button.setAttribute('class','toggle')
+            toggleContainer.setAttribute('class','toggleContainer')
             
             //toggle read
             button.addEventListener('click', () => {
