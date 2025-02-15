@@ -6,9 +6,9 @@ const closebtn = document.querySelector('form button')
 
 function book(tittle, author, pages,seen) {
   // the constructor...
-  this.tittle = tittle;
-  this.author = author;
-  this.pages = pages;
+  this.tittle = 'Tittle: ' + tittle;
+  this.author = 'Author: ' + author;
+  this.pages = 'Pages: ' + pages;
   this.seen = seen;
 }
 
@@ -19,7 +19,7 @@ book.prototype.toggle = function(){
   else {
     this.seen = 'Read'
   }
-  console.log(this.seen);
+  // console.log(this.seen);
   
 }
 
@@ -33,19 +33,31 @@ function addBookToLibrary(tittle, author, pages,seen) {
 
 showBtn.addEventListener('click', () => {
   dialog.showModal()
+
+  //refreashes the form
+  document.querySelectorAll("form input[type=text], input[type=number]").forEach(input => input.value = '');
 })
 
 closebtn.addEventListener('click', (e) => {
-dialog.close();
-
+  //prevents validation when inputs is null
+  if (document.querySelector('input[type=text]').value != '' 
+      && document.querySelector('input[type=number]').value != '' ) {
+    dialog.close();
+    console.log('close');
+    
+  }
+  // elseif () {
+  //   dialog.close()
+  // }
 })
 
 dialog.addEventListener('submit', (e) => {
 e.preventDefault()
-const author = document.querySelector('#Author').value;
-const tittle = document.querySelector('#Tittle').value;
-const pages = document.querySelector('#pages').value;
-const seen =  document.querySelector('input[name="read"]:checked').value;
+let author = document.querySelector('#Author').value;
+let tittle = document.querySelector('#Tittle').value;
+let pages = document.querySelector('#pages').value;
+let seen =  document.querySelector('input[name="read"]:checked').value;
+
 
 
 //removes children first
@@ -54,9 +66,7 @@ container.replaceChildren();
 addBookToLibrary(tittle, author, pages,seen);
 loopArray();
 
-
 })
-
 
 // console.table(myLibrary)
 const container = document.getElementById('card-container');

@@ -18,22 +18,22 @@
             <form action="dialog">
                 <div>
                     <label for="Author">Author</label>
-                    <input id="Author" type="text" name="Author" autofocus >
+                    <input id="Author" type="text" name="Author" placeholder="Author" autofocus required>
                 </div>
                 <div>
                     <label for="Tittle">Tittle</label>
-                    <input id="Tittle" name="Tittle" type="text">
+                    <input id="Tittle" name="Tittle" type="text" placeholder="Tittle" required>
                 </div>
                 <div>
                     <label for="pages">pages</label>
-                    <input id="pages" name="pages" type="number">
+                    <input id="pages" name="pages" type="number" placeholder="pages" required>
                 </div>
                 <div>
-                    <label for="read">Read</label>
-                    <input name="read" type="radio" value="Read"> yes
+                    <label for="read" >Read</label>
+                    <input name="read" type="radio" value="Read" checked> yes
                     <input name="read" type="radio" value="Not-Read"> no 
                 </div>
-                <button type="submit"> ADD</button>
+                <button type="submit" id="submitBtn" > ADD</button>
             </form>    
         </dialog>
     </div>
