@@ -3,33 +3,30 @@ const showBtn = document.querySelector('#header > button')
 const dialog = document.querySelector('dialog')
 const closebtn = document.querySelector('form button')
 
-
-function book(tittle, author, pages,seen) {
-  // the constructor...
-  this.tittle = 'Tittle: ' + tittle;
-  this.author = 'Author: ' + author;
-  this.pages = 'Pages: ' + pages;
-  this.seen = seen;
-}
-
-book.prototype.toggle = function(){
-  if (this.seen =='Read'){
-    this.seen = 'Not-Read'
+class book {
+  Book;
+  constructor(tittle, author, pages,seen) {
+    this.tittle = 'Tittle: ' + tittle;
+    this.author = 'Author: ' + author;
+    this.pages = 'Pages: ' + pages;
+    this.seen = seen;
   }
-  else {
-    this.seen = 'Read'
+
+  toggle(){
+    if (this.seen =='Read'){
+      this.seen = 'Not-Read'
+    }
+    else {
+      this.seen = 'Read'
+    }
   }
-  // console.log(this.seen);
-  
+
+  addBookToLibrary(tittle, author, pages,seen){
+    this.Book = new this.constructor(tittle, author, pages, seen)
+    myLibrary.push(this.Book)
+  }
 }
 
-
-function addBookToLibrary(tittle, author, pages,seen) {
-  // take params, create a book then store it in the array
-  const Book = new book (tittle, author, pages, seen)
-  myLibrary.push(Book)
-  
-}
 
 showBtn.addEventListener('click', () => {
   dialog.showModal()
@@ -63,7 +60,9 @@ let seen =  document.querySelector('input[name="read"]:checked').value;
 //removes children first
 container.replaceChildren();
 
-addBookToLibrary(tittle, author, pages,seen);
+// console.log(tittle,author,pages,seen);
+
+new book().addBookToLibrary(tittle, author, pages,seen);
 loopArray();
 
 })
